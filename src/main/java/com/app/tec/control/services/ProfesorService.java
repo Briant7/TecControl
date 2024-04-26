@@ -18,4 +18,8 @@ public class ProfesorService {
 	public List<Profesor> listar(){
 		return (List<Profesor>) repository.findAll();
 	}
+	
+	public Profesor buscarProfesor(Long id) {
+		return repository.findById(id).orElse(null);
+	}
 }
