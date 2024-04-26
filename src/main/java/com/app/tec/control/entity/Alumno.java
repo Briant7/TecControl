@@ -18,7 +18,17 @@ public class Alumno {
 	
 	private String apellidos;
 	
+	private Integer numControl;
 	
+
+	
+	public Integer getNumControl() {
+		return numControl;
+	}
+
+	public void setNumControl(Integer numControl) {
+		this.numControl = numControl;
+	}
 
 	public Long getId() {
 		return id;
