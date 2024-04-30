@@ -22,4 +22,8 @@ public class ProfesorService {
 	public Profesor buscarProfesor(Long id) {
 		return repository.findById(id).orElse(null);
 	}
+	
+	public Profesor guardarProfesor(Profesor datosProfesor) {
+		return repository.save(datosProfesor);
+	}
 }
