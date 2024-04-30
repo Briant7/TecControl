@@ -22,4 +22,8 @@ public class MateriaService {
 	public Materia buscarMateria(Long id) {
 		return repository.findById(id).orElse(null);
 	}
+	
+	public Materia guardarMateria(Materia datosmateria) {
+		return repository.save(datosmateria);
+	}
 }

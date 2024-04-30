@@ -22,4 +22,8 @@ public class AlumnoService {
 	public Alumno buscarAlumno(Long id) {
 		return repository.findById(id).orElse(null);
 	}
+	
+	public Alumno guardarAlumno(Alumno datosAlumno) {
+		return repository.save(datosAlumno);
+	}
 }
