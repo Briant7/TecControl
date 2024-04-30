@@ -19,4 +19,7 @@ public class AlumnoService {
 		return (List<Alumno>) repository.findAll();
 	}
 
+	public Alumno buscarAlumno(Long id) {
+		return repository.findById(id).orElse(null);
+	}
 }

@@ -18,4 +18,8 @@ public class MateriaService {
 	public List<Materia> listar(){
 		return (List<Materia>) repository.findAll();
 	}
+	
+	public Materia buscarMateria(Long id) {
+		return repository.findById(id).orElse(null);
+	}
 }
