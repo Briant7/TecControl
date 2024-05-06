@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -32,11 +34,28 @@ public class AlumnoController {
 		return service.buscarAlumno(id);
 	}
 	
-	@PostMapping
+	@PostMapping("/guardar")
 	@ResponseStatus(code=HttpStatus.CREATED)
 	public Alumno guardar(@RequestBody Alumno alumno) {
 		Alumno alumnoNuevo=null;
 		alumnoNuevo= service.guardarAlumno(alumno);
 		return alumnoNuevo;
 	}
+	
+	@PutMapping("/actualizar/{id}")
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public Alumno actualizar(@RequestBody Alumno alumno, @PathVariable Long id) {
+		
+		Alumno alumnoActual = service.buscarAlumno(id);
+		alumnoActual.setNombre(alumno.getNombre());
+		alumnoActual.setApellidos(alumno.getApellidos());
+		return service.guardarAlumno(alumnoActual);
+	}
+	
+	@DeleteMapping("/{id}")
+	@ResponseStatus(code = HttpStatus.NOT_FOUND)
+	public void elminar(@PathVariable Long id) {
+		service.eliminarAlumno(id);
+	}
+
 }

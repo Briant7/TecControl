@@ -26,4 +26,8 @@ public class ProfesorService {
 	public Profesor guardarProfesor(Profesor datosProfesor) {
 		return repository.save(datosProfesor);
 	}
+	
+	public void eliminarProfesor(Long id) {
+		repository.deleteById(id);
+	}
 }

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -32,11 +33,21 @@ public class MateriaController {
 		return service.buscarMateria(id);
 	}
 	
-	@PostMapping
+	@PostMapping("/guardar")
 	@ResponseStatus(code=HttpStatus.CREATED)
 	public Materia guardar(@RequestBody Materia materia) {
 		Materia materiaNueva=null;
 		materiaNueva=service.guardarMateria(materia);
 		return materiaNueva;
+	}
+	
+	@PutMapping("/actualizar/{id}")
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public Materia actualizar(@RequestBody Materia materia, @PathVariable Long id) {
+		
+		Materia materiaActual = service.buscarMateria(id);
+		materiaActual.setNombre(materiaActual.getNombre());
+		materiaActual.setCreditos(0);
+		return service.guardarMateria(materiaActual);
 	}
 }

@@ -26,4 +26,8 @@ public class AlumnoService {
 	public Alumno guardarAlumno(Alumno datosAlumno) {
 		return repository.save(datosAlumno);
 	}
+	
+	public void eliminarAlumno(Long id) {
+		repository.deleteById(id);
+	}
 }

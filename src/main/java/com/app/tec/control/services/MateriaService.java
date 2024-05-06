@@ -26,4 +26,8 @@ public class MateriaService {
 	public Materia guardarMateria(Materia datosmateria) {
 		return repository.save(datosmateria);
 	}
+	
+	public void eliminarMateria(Long id) {
+		repository.deleteById(id);
+	}
 }
