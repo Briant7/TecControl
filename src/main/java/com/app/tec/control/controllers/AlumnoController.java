@@ -49,6 +49,7 @@ public class AlumnoController {
 		Alumno alumnoActual = service.buscarAlumno(id);
 		alumnoActual.setNombre(alumno.getNombre());
 		alumnoActual.setApellidos(alumno.getApellidos());
+		alumnoActual.setNumControl(alumno.getNumControl());
 		return service.guardarAlumno(alumnoActual);
 	}
 	

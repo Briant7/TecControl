@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,8 +47,17 @@ public class MateriaController {
 	public Materia actualizar(@RequestBody Materia materia, @PathVariable Long id) {
 		
 		Materia materiaActual = service.buscarMateria(id);
-		materiaActual.setNombre(materiaActual.getNombre());
-		materiaActual.setCreditos(0);
-		return service.guardarMateria(materiaActual);
+		materiaActual.setNombre(materia.getNombre());
+		materiaActual.setCreditos(materia.getCreditos());
+		return service.guardarMateria(materiaActual);	
 	}
+	
+	
+	@DeleteMapping("/{id}")
+	@ResponseStatus(code= HttpStatus.NOT_FOUND)
+	public void elminar(@PathVariable Long id) {
+		service.eliminarMateria(id);
+	}
+	
+	
 }
